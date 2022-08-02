@@ -50,9 +50,9 @@
 						<div class = "scroller_selector">
 							<div class = "selectdiv">
 								<select name="scrollers" id="scrollers">
-									<option onclick="display_div('creationsscroller');">Creations</option>
-									<option onclick="display_div('guitarscroller');">Live</option>
-									<option onclick="display_div('shortsscroller');">Shorts</option>
+									<option scroller = "creationsscroller";>Creations</option>
+									<option scroller = "guitarscroller" >Live</option>
+									<option scroller = "shortsscroller">Shorts</option>
 								</select>
 							</div>
 							<br><br>
@@ -140,6 +140,16 @@
 							</div>
 
 					</div>
+
+					<script>
+						$('#scrollers').on('change', function () {
+							$('.media-scroller').hide();
+							var selectedscroller = $('option:selected', this).attr('scroller')
+							document.getElementById(selectedscroller).style.display = "grid";
+							}
+						
+						);
+					</script>			
 
 					<script>
 						//29 live
@@ -333,47 +343,6 @@
 					//array of video IDs
 
 					//Black Video array, populated with urls of thumbnails - i.e. move thumbnails and they will keep their order
-					const videoIDarray = []
-						const thumb1 = document.getElementById("thumb1");
-						const thumb2 = document.getElementById("thumb2");
-						const thumb3 = document.getElementById("thumb3");
-						const thumb4 = document.getElementById("thumb4");
-						const thumb5 = document.getElementById("thumb5");
-						const thumb6 = document.getElementById("thumb6");
-
-						videoIDarray[0] = thumb1.getAttribute('url')
-						videoIDarray[1] = thumb2.getAttribute('url')
-						videoIDarray[2] = thumb3.getAttribute('url')
-						videoIDarray[3] = thumb4.getAttribute('url')
-						videoIDarray[4] = thumb5.getAttribute('url')
-						videoIDarray[5] = thumb6.getAttribute('url')
-
-
-					function changevideoID1() {
-						player.loadVideoById(videoIDarray[0]);
-					}
-
-					function changevideoID2() {
-						player.loadVideoById(videoIDarray[1]);
-					}
-
-					function changevideoID3() {
-						player.loadVideoById(videoIDarray[2]);
-					}
-
-					function changevideoID4() {
-						player.loadVideoById(videoIDarray[3]);
-					}
-					function changevideoID5() {
-						player.loadVideoById(videoIDarray[4]);
-					}
-					function changevideoID6() {
-						player.loadVideoById(videoIDarray[5]);
-					}
-
-					function closepopup() {
-						document.querySelector('.popup-video').style.display = 'none';
-					}
 					</script>
 					
 
@@ -381,7 +350,7 @@
 						//var musicthumb_list = document.querySelectorAll(".musicthumb");
 						//var musicthumb_array = [...musicthumb_list];
 						
-						
+						// Gets thumbname from url
 						$(document).ready(function(){
 							$(".musicthumb").each(function(){
 								var video_id = $(this).attr('url');
@@ -389,20 +358,7 @@
 								$(this).attr("src", thumburl);
 							}) ;
 						})
-						// }
-						// )
 						
-
-						// $(document).ready(function(){
-						// 	musicthumb_array.forEach(thumb => {
-						// 	var video_id = thumb.getAttribute('url');
-						// 	var thumburl = `https://img.youtube.com/vi/${video_id}/0.jpg`;
-						// 	return(thumburl);
-						// 	thumb.setattribute("src",thumburl);
-						// 	}
-						// )}
-						// )
-					
 
 			
 					
